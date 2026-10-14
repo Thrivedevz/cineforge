@@ -27,6 +27,8 @@ CineForge is a production playbook for building recap-style AI video episodes en
                                            +----------+
 ```
 
+Optional stage 7.5 (ENHANCE: upscaling/denoising, frame interpolation) sits between generation (7) and assembly (8). It is never a gate: stage 7 output is always assembly-ready without it.
+
 Stage 6 (prompt engineering) draws on the character designs from stage 4 and the reference images from stage 5. Stages 4-6 can overlap with stage 3 once the script is locked.
 
 ## Quickstart
@@ -65,7 +67,10 @@ cineforge/
     tts-pipeline.md
     audio-post.md
     music-bed.md
+    audio-separation.md
   video/
+    enhancement.md
+    generation-backends.md
     generation-workflows.md
     character-design-system.md
     assembly.md
@@ -74,6 +79,7 @@ cineforge/
     voice-post.sh
     music-bed.sh
     assemble.sh
+    enhance.sh
     qc.sh
   examples/
     episode-breakdown/
@@ -100,4 +106,8 @@ cineforge/
 
 ## Credits
 
-Pipeline architecture inspired by MoneyPrinterTurbo; workflow structure inspired by guide-to-best-ai-filmmaking; directing-brief formula inspired by flaqai prompt packs. All content in this repo is original.
+Pipeline architecture inspired by MoneyPrinterTurbo; workflow structure inspired by guide-to-best-ai-filmmaking; directing-brief formula inspired by flaqai prompt packs. v1.1 inspirations: Anime4K (bloc97/Anime4K) and video2x (k4yt3x/video2x) for the enhancement stage, RIFE (rife-ncnn-vulkan) for frame interpolation, Ultimate Vocal Remover (Anjok07/ultimatevocalremovergui) for audio separation, ComfyUI (Comfy-Org/ComfyUI) for the alternate generation backend. All content in this repo is original.
+
+## Changelog
+
+### v1.1 (2026-10-14): adds the optional enhancement stage (Stage 7.5), audio-separation doc, alternate generation backends doc, enhance.sh script, and the format matrix.

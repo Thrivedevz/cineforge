@@ -136,6 +136,24 @@ Core rule for the entire pipeline: **no hallucination.** Every event, name, tech
 
 ---
 
+## Stage 7.5: Enhancement (optional)
+
+**Purpose.** Optional post-generation polish applied between generation and assembly. It is numbered 7.5 precisely because it is optional and never blocks the pipeline: the stage 7 output is always assembly-ready without it.
+
+**Inputs.** Stage 7 scene clips, project budget and timeline.
+
+**Steps.**
+1. Decide per project whether enhancement is worth the compute. Default: skip for standard episodes. Consider it for flagship releases.
+2. For anime content, apply anime upscaling/denoising (Anime4K technique). For photorealistic content, use Real-ESRGAN.
+3. Optionally interpolate frames for smoother motion (RIFE-style).
+4. Always keep the pre-enhancement master untouched, so any pass can be redone or dropped without losing the original clips.
+
+**Outputs.** Enhanced scene clips, with the pre-enhancement master archived.
+
+**Exit gate.** Enhanced clips verified against the pre-enhancement master: no new artifacts, character designs intact. If in doubt, ship the unenhanced clips.
+
+---
+
 ## Stage 8: Assembly
 
 **Purpose.** Combine voice, clips, music, and captions into one finished episode file.
@@ -171,6 +189,17 @@ Core rule for the entire pipeline: **no hallucination.** Every event, name, tech
 
 ---
 
+## Format matrix
+
+The pipeline is format-agnostic. Universal across formats: the nine stages, the scripting rules, the full voiceover studio (phonetics, TTS pipeline, audio post, original music bed), assembly, animated captions, QC, and thumbnails. What swaps per format is the design system, the enhancement option, the directing-brief pack, and where relevant the audio setup.
+
+| Format | What swaps in |
+| --- | --- |
+| Anime recap | Anime-accurate character designs, Anime4K enhancement option, `prompts/directing-briefs/anime-action.md` |
+| Photorealistic fantasy film | Photorealistic character sheets, Real-ESRGAN enhancement option, `prompts/directing-briefs/fantasy-film.md`, audio-separation for dialogue (`voiceover/audio-separation.md`) |
+| Ads / UGC | `prompts/directing-briefs/ads-ugc.md`, lighter QC density as appropriate |
+| Documentary | `prompts/directing-briefs/documentary.md`, lighter QC density as appropriate |
+
 ## Thumbnail
 
 Every episode ships with a thumbnail from the locked template: the episode number rendered as "01" inside an ornamented golden ring badge at the top-right, with the series' full name in gold along the bottom. Reuse the template with only the number swapped.
@@ -180,7 +209,7 @@ Every episode ships with a thumbnail from the locked template: the episode numbe
 - `workflow/stage-gates.md`: the nine gates in checklist form.
 - `workflow/qc-checklist.md`: the full QC pass.
 - `prompts/prompt-formula.md`: the directing-brief formula.
-- `voiceover/`: voice direction, phonetics, TTS pipeline, audio post, music bed.
-- `video/`: generation workflows, character design system, assembly.
-- `scripts/`: the five runnable pipeline scripts.
+- `voiceover/`: voice direction, phonetics, TTS pipeline, audio post, music bed, audio-separation.
+- `video/`: generation workflows, character design system, assembly, enhancement, generation-backends.
+- `scripts/`: the six runnable pipeline scripts.
 - `examples/episode-breakdown/`: a worked example of one episode.
