@@ -182,6 +182,7 @@ Core rule for the entire pipeline: **no hallucination.** Every event, name, tech
 1. Run the QC script: black-frame detection, full decode check, loudness verification, file-size guard.
 2. Watch the opening and closing bumpers plus two random middle scenes at speed. Check caption sync on each.
 3. Deliver ONE complete episode file to the final destination. Never split parts, never attach fragments.
+4. Package for upload: run `scripts/package_youtube.py` with the episode metadata and scene timings to produce the title, description (policy-validated chapters), tags, thumbnail, and upload checklist (`packaging/youtube-packaging.md`). Review the package; nothing is published automatically.
 
 **Outputs.** The delivered episode file, plus a QC log.
 
@@ -233,5 +234,5 @@ Every episode ships with a thumbnail from the locked template: the episode numbe
 - `video/talking-heads.md`: talking-head generation direction.
 - `voiceover/`: voice direction, phonetics, TTS pipeline, audio post, music bed, audio-separation.
 - `video/`: generation workflows, character design system, assembly, enhancement, generation-backends.
-- `scripts/`: the six runnable pipeline scripts.
+- `scripts/`: the eight runnable pipeline scripts.
 - `examples/episode-breakdown/`: a worked example of one episode.

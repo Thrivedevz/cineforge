@@ -1,0 +1,26 @@
+# YouTube packaging policy rules (machine-readable).
+# Rules live here, kept current, never hard-coded in scripts.
+last_verified: "2026-10-14"
+source: "YouTube Help + YouTube Studio documentation"
+
+chapters:
+  first_timestamp: "00:00"      # first chapter must start here
+  min_chapters: 3               # at least this many timestamps
+  min_chapter_seconds: 10       # each chapter at least this long
+  ascending: true               # timestamps in ascending order
+  manual_overrides_automatic: true
+
+metadata_honesty:
+  - "Title, description, tags, and thumbnail must accurately represent the video content."
+  - "No misleading metadata: no claims the video does not deliver."
+  - "No spam tagging: every tag must be relevant to the content."
+
+hashtags:
+  max_in_description: 3
+  note: "YouTube surfaces the first 3 hashtags above the title; keep the block tight and relevant."
+
+promise_check:
+  - "Title claim appears in the video."
+  - "Thumbnail claim appears in the video."
+  - "Description claims match actual content."
+  - "Chapters match real content at those timestamps."

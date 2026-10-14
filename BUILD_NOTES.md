@@ -94,3 +94,20 @@ Added: `localization/dubbing.md`, `voiceover/ai-music-sfx.md`, `voiceover/multi-
 - The awk label regex treats any line starting with an UPPERCASE token ending in a colon as a speaker label (e.g. `SCENE 1:` would become speaker "SCENE 1"); documented in the script usage text.
 - AI upscaler/true-RIFE paths (v1.1) remain unexercised live (binaries not installed on this VM).
 - Inspirations credited by name only (README Credits + in-doc credit lines). No text copied from any source repo.
+
+## v1.3 (2026-10-14): YouTube packaging automation
+
+Added: `packaging/youtube-packaging.md`, `packaging/policy-rules.yaml` (last_verified 2026-10-14), `packaging/description-template.md`, `scripts/package_youtube.py` (executable). Changed: `thumbnails/thumbnail-system.md` (automated composite section), `GUIDE.md` (packaging as final Stage 9 step, script count 6 -> 8), `README.md` (repo map, credits, changelog v1.3).
+
+### Test results (real Episode 13 data)
+- Chapter source: 12 chapters derived from real scene titles + cumulative mix wav timings (scenes 1,5,9,13,17,22,26,31,39,47,57,62; starts 0.0s to 1077.7s).
+- `package_youtube.py --dry-run`: exit 0; chapters OK (12 chapters, policy pass); correct plan (title, 1094-char description, 13 tags, 3 hashtags, thumbnail from video).
+- Full run: exit 0; wrote title.txt ("Flame Ascension Ep 13: The Deadly Hunt | Cultivation Chronicles Recap"), description.txt (hook, subscribe line, 12 chapters from 00:00, channel blurb, spoiler note, #FlameAscension #BattleThroughTheHeavens #BTTH), tags.txt (13 tags, deduplicated), upload-checklist.md (promise check + honesty + upload steps), thumbnail.png.
+- thumbnail.png: valid PNG 1280x720 (ffprobe); frame from 25% of the real 593MB Ep13 MP4; gold "13" top-right, "FLAME ASCENSION" gold bottom over a dark legibility band; visually verified.
+- Policy validator negative test (first chapter at 5.0s, only 2 chapters): exit 2 with clear POLICY VIOLATION lines; no files written.
+- `python3 -m py_compile` equivalent (ast.parse): OK. Repo-wide em-dash grep: zero matches.
+
+### Caveats and open items
+- The automated thumbnail is an achievable composite (gold text, no ornamental ring badge); hand-finished variants remain the design aspiration. Added --thumb-at to pick a clean frame; extracted frames may contain burned-in captions (mitigated by the dark legibility band).
+- policy-rules.yaml encodes YouTube rules verified 2026-10-14; re-verify on a schedule since policies evolve.
+- The packager never uploads or publishes; the user uploads manually.
