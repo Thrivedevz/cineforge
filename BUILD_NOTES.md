@@ -74,3 +74,23 @@ Three parallel writers produced the packages (video docs: enhancement.md + gener
 
 - Enhancement is GPU-heavy by nature; the stage is optional per project by design (default: skip for standard episodes).
 - Inspirations are credited by name only (README Credits + in-doc credit lines). No text was copied from any source repo.
+
+---
+
+## v1.2 build log (2026-10-14)
+
+Added: `localization/dubbing.md`, `voiceover/ai-music-sfx.md`, `voiceover/multi-voice.md`, `video/talking-heads.md`, `scripts/dub-prep.sh`. Changed: `GUIDE.md` (new optional Stage 10 Localization, format matrix + reference docs updated, voiceover stage notes), `README.md` (repo map, credits, changelog, pipeline heading).
+
+### Test results
+- `bash -n` on all 7 scripts: OK.
+- Repo-wide em-dash grep: zero matches.
+- dub-prep.sh --dry-run on an 8-line fixture (3 speakers, blank line, unlabeled continuation, label-only line): exit 0; correct plan (5 segments, 47 words, 18.8s est at 150wpm; label-only line skipped with warning; no files written).
+- dub-prep.sh --speakers: exit 0; speakers listed in first-appearance order, no files written.
+- dub-prep.sh real split: exit 0; 5 segment files + manifest.tsv; independently verified with python3: no label-pattern line in any segment file, manifest word counts correct (11, 7, 11, 6, 12), durations match words*60/wpm (4.4, 2.8, 4.4, 2.4, 4.8s).
+- --wpm 120 --lang zh: durations 5.5/3.5/5.5/3.0/6.0s, lang zh; all match wpm math.
+- Edge cases: label-free script becomes one UNKNOWN segment with warning; label-only line at EOF skipped with warning; empty script produces header-only manifest; missing input exits 2 with usage; --wpm 0 / --wpm abc exit 2 with usage.
+
+### Caveats and open items
+- The awk label regex treats any line starting with an UPPERCASE token ending in a colon as a speaker label (e.g. `SCENE 1:` would become speaker "SCENE 1"); documented in the script usage text.
+- AI upscaler/true-RIFE paths (v1.1) remain unexercised live (binaries not installed on this VM).
+- Inspirations credited by name only (README Credits + in-doc credit lines). No text copied from any source repo.

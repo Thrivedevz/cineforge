@@ -2,7 +2,7 @@
 
 CineForge is a production playbook for building recap-style AI video episodes end to end, from raw idea to a finished, quality-checked MP4. It was developed while producing long-form anime recap episodes (15-23 minutes each, roughly 45-55 narration words per scene) and encodes everything the process taught: a nine-stage pipeline, strict no-hallucination source discipline, voiceover and audio-post chains, character-design consistency rules, directing principles for prompt engineering, assembly conventions, and QC gates. It does not generate video by itself. It directs external video models and automates everything around them: script prep, voiceover synthesis, original music, animated captions, assembly, and packaging.
 
-## The 9-stage pipeline
+## The pipeline
 
 ```
 +-------+   +--------+   +-----------+   +-----------------+
@@ -68,18 +68,24 @@ cineforge/
     audio-post.md
     music-bed.md
     audio-separation.md
+    ai-music-sfx.md
+    multi-voice.md
   video/
     enhancement.md
     generation-backends.md
     generation-workflows.md
     character-design-system.md
+    talking-heads.md
     assembly.md
+  localization/
+    dubbing.md
   scripts/
     tts-synthesize.sh
     voice-post.sh
     music-bed.sh
     assemble.sh
     enhance.sh
+    dub-prep.sh
     qc.sh
   examples/
     episode-breakdown/
@@ -106,8 +112,10 @@ cineforge/
 
 ## Credits
 
-Pipeline architecture inspired by MoneyPrinterTurbo; workflow structure inspired by guide-to-best-ai-filmmaking; directing-brief formula inspired by flaqai prompt packs. v1.1 inspirations: Anime4K (bloc97/Anime4K) and video2x (k4yt3x/video2x) for the enhancement stage, RIFE (rife-ncnn-vulkan) for frame interpolation, Ultimate Vocal Remover (Anjok07/ultimatevocalremovergui) for audio separation, ComfyUI (Comfy-Org/ComfyUI) for the alternate generation backend. All content in this repo is original.
+Pipeline architecture inspired by MoneyPrinterTurbo; workflow structure inspired by guide-to-best-ai-filmmaking; directing-brief formula inspired by flaqai prompt packs. v1.1 inspirations: Anime4K (bloc97/Anime4K) and video2x (k4yt3x/video2x) for the enhancement stage, RIFE (rife-ncnn-vulkan) for frame interpolation, Ultimate Vocal Remover (Anjok07/ultimatevocalremovergui) for audio separation, ComfyUI (Comfy-Org/ComfyUI) for the alternate generation backend. v1.2 inspirations: VideoLingo (Huanshere/VideoLingo) for dubbing and localization, Meta AudioCraft (facebookresearch/audiocraft) for AI music and SFX, Chatterbox (resemble-ai/chatterbox) for multi-voice cloning, SadTalker (OpenTalker/SadTalker) for talking heads. All content in this repo is original.
 
 ## Changelog
+
+### v1.2 (2026-10-14): adds the localization stage (Stage 10: dubbing + subtitles), AI music/SFX premium tier doc, multi-voice direction doc, talking-heads doc, and the dub-prep.sh script.
 
 ### v1.1 (2026-10-14): adds the optional enhancement stage (Stage 7.5), audio-separation doc, alternate generation backends doc, enhance.sh script, and the format matrix.

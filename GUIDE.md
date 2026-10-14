@@ -1,4 +1,4 @@
-# CineForge Playbook: the 9 stages
+# CineForge Playbook: the production stages
 
 This guide walks the full pipeline from idea to packaged episode. Each stage lists its purpose, inputs, step-by-step actions, outputs, and the exit gate you must clear before moving on. Do not skip gates. Thin scripts, inconsistent characters, and untested audio chains are the three most common reasons episodes need rebuilding.
 
@@ -54,7 +54,7 @@ Core rule for the entire pipeline: **no hallucination.** Every event, name, tech
 3. Run synthesis, then check every segment for completeness: no truncation, no missing lines, no label leakage.
 4. Apply the audio post chain (ffmpeg): `acompressor=threshold=-20dB:ratio=3:attack=15:release=200:makeup=3dB`, then `aecho=0.8:0.6:25|40:0.18|0.12` (subtle room), then `loudnorm=I=-16:TP=-1.5:LRA=11`.
 
-**Outputs.** A single normalized voice track, plus the original music bed (stage 8) ready to mix underneath.
+**Outputs.** A single normalized voice track, plus the original music bed (stage 8) ready to mix underneath. For dialogue-heavy productions, see `voiceover/multi-voice.md` (one locked voice per character) and `voiceover/ai-music-sfx.md` (AI-generated scores as the premium tier above the procedural bed).
 
 **Exit gate.** Full decode of the voice track plays clean, ends to end. Loudness verified against the normalization target.
 
@@ -189,9 +189,27 @@ Core rule for the entire pipeline: **no hallucination.** Every event, name, tech
 
 ---
 
+## Stage 10: Localization (optional)
+
+**Purpose.** Produce dubbed and/or subtitled versions of a finished episode for new audiences, without re-running the production pipeline.
+
+**Inputs.** The delivered episode file, the locked term table (character names, technique names, place names), per-character locked voices.
+
+**Steps.**
+1. Segment subtitles sentence-aware with length limits (`localization/dubbing.md`).
+2. Translate with the term table locked, so names stay identical across languages (same discipline as the phonetics table).
+3. Dub with one consistent voice per character across languages (`voiceover/multi-voice.md`), aligned to original scene timing. Prepare inputs with `scripts/dub-prep.sh`.
+4. Run the dubbing QC checklist: sync, levels, no buried dialogue, labels never synthesized.
+
+**Outputs.** Localized subtitle files and/or dubbed episode versions, plus a dubbing QC log.
+
+**Exit gate.** Dubbed lines match original timing, terminology is consistent, and every dubbing QC check passes.
+
+---
+
 ## Format matrix
 
-The pipeline is format-agnostic. Universal across formats: the nine stages, the scripting rules, the full voiceover studio (phonetics, TTS pipeline, audio post, original music bed), assembly, animated captions, QC, and thumbnails. What swaps per format is the design system, the enhancement option, the directing-brief pack, and where relevant the audio setup.
+The pipeline is format-agnostic. Universal across formats: the stages, the scripting rules, the full voiceover studio (phonetics, TTS pipeline, audio post, original music bed, AI music premium tier, multi-voice), assembly, animated captions, QC, thumbnails, and localization. What swaps per format is the design system, the enhancement option, the directing-brief pack, and where relevant the audio setup.
 
 | Format | What swaps in |
 | --- | --- |
@@ -206,9 +224,13 @@ Every episode ships with a thumbnail from the locked template: the episode numbe
 
 ## Reference documents
 
-- `workflow/stage-gates.md`: the nine gates in checklist form.
+- `workflow/stage-gates.md`: the stage gates in checklist form.
 - `workflow/qc-checklist.md`: the full QC pass.
 - `prompts/prompt-formula.md`: the directing-brief formula.
+- `localization/dubbing.md`: dubbing and localization direction.
+- `voiceover/ai-music-sfx.md`: AI-generated music and SFX (premium tier).
+- `voiceover/multi-voice.md`: multi-character voice direction.
+- `video/talking-heads.md`: talking-head generation direction.
 - `voiceover/`: voice direction, phonetics, TTS pipeline, audio post, music bed, audio-separation.
 - `video/`: generation workflows, character design system, assembly, enhancement, generation-backends.
 - `scripts/`: the six runnable pipeline scripts.
