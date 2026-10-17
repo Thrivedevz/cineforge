@@ -111,3 +111,12 @@ Added: `packaging/youtube-packaging.md`, `packaging/policy-rules.yaml` (last_ver
 - The automated thumbnail is an achievable composite (gold text, no ornamental ring badge); hand-finished variants remain the design aspiration. Added --thumb-at to pick a clean frame; extracted frames may contain burned-in captions (mitigated by the dark legibility band).
 - policy-rules.yaml encodes YouTube rules verified 2026-10-14; re-verify on a schedule since policies evolve.
 - The packager never uploads or publishes; the user uploads manually.
+
+## v1.4 (2026-10-17): Horror directing-brief pack
+
+Added: `prompts/directing-briefs/horror.md` (5 briefs: hallway dread, entity reveal, house chase, mirror wrongness, lingering anomaly). Changed: `GUIDE.md` (format matrix + Horror narration row), `README.md` (repo map, changelog v1.4).
+
+### Notes
+- Written for narrated original horror (Nightmare Nexus launch): slow-dread pacing, practical locked light sources, reveals without cuts, anomalies over explicit monsters.
+- Every brief follows the 8-block formula; stamped "Last verified: 2026-10", model-agnostic.
+- Repo-wide em-dash grep: zero matches.
