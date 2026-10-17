@@ -56,6 +56,7 @@ cineforge/
       fantasy-film.md
       ads-ugc.md
       documentary.md
+      horror.md
     templates/
       scene-prompt-template.md
       character-lock-template.md
@@ -120,6 +121,8 @@ cineforge/
 Pipeline architecture inspired by MoneyPrinterTurbo; workflow structure inspired by guide-to-best-ai-filmmaking; directing-brief formula inspired by flaqai prompt packs. v1.1 inspirations: Anime4K (bloc97/Anime4K) and video2x (k4yt3x/video2x) for the enhancement stage, RIFE (rife-ncnn-vulkan) for frame interpolation, Ultimate Vocal Remover (Anjok07/ultimatevocalremovergui) for audio separation, ComfyUI (Comfy-Org/ComfyUI) for the alternate generation backend. v1.2 inspirations: VideoLingo (Huanshere/VideoLingo) for dubbing and localization, Meta AudioCraft (facebookresearch/audiocraft) for AI music and SFX, Chatterbox (resemble-ai/chatterbox) for multi-voice cloning, SadTalker (OpenTalker/SadTalker) for talking heads. v1.3: YouTube packaging rules verified against YouTube Help and Studio documentation (2026-10-14); all packaging content original. All content in this repo is original.
 
 ## Changelog
+
+### v1.4 (2026-10-17): adds the horror directing-brief pack (`prompts/directing-briefs/horror.md`, 5 briefs: hallway dread, entity reveal, house chase, mirror wrongness, lingering anomaly) for narrated horror, plus the Horror narration row in the format matrix.
 
 ### v1.3 (2026-10-14): adds the YouTube packaging layer: packaging/ docs (concept, policy-rules.yaml with last_verified 2026-10-14, description template), the package_youtube.py script (policy-validated chapters, title/description/tags generation, automated thumbnail composite, upload checklist), packaging as the final Stage 9 step, and the automated-composite section in the thumbnail system.
 
