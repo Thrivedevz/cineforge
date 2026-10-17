@@ -218,6 +218,7 @@ The pipeline is format-agnostic. Universal across formats: the stages, the scrip
 | Photorealistic fantasy film | Photorealistic character sheets, Real-ESRGAN enhancement option, `prompts/directing-briefs/fantasy-film.md`, audio-separation for dialogue (`voiceover/audio-separation.md`) |
 | Ads / UGC | `prompts/directing-briefs/ads-ugc.md`, lighter QC density as appropriate |
 | Documentary | `prompts/directing-briefs/documentary.md`, lighter QC density as appropriate |
+| Horror narration | Practical-light design system, `prompts/directing-briefs/horror.md` |
 
 ## Thumbnail
 
