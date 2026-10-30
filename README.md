@@ -62,11 +62,13 @@ cineforge/
       character-lock-template.md
       voiceover-block-template.md
       film-brief-template.md
+      direction-sheet-template.md
   voiceover/
     voice-direction.md
     phonetics-guide.md
     tts-pipeline.md
     audio-post.md
+    quiet-sfx.md
     music-bed.md
     audio-separation.md
     ai-music-sfx.md
@@ -92,6 +94,8 @@ cineforge/
     enhance.sh
     dub-prep.sh
     package_youtube.py
+    preflight_check.py
+    make_dashboard.py
     qc.sh
   examples/
     episode-breakdown/
@@ -122,8 +126,9 @@ Pipeline architecture inspired by MoneyPrinterTurbo; workflow structure inspired
 
 ## Changelog
 
-### v1.4 (2026-10-17): adds the horror directing-brief pack (`prompts/directing-briefs/horror.md`, 5 briefs: hallway dread, entity reveal, house chase, mirror wrongness, lingering anomaly) for narrated horror, plus the Horror narration row in the format matrix.
+### v1.5 (2026-10-29): adds the direction approval gate and the quiet SFX method, adapted from a production evaluation of the Beyondsumi workflow (MIT) and locked by the owner for the Nightmare Nexus channel. New: prompts/templates/direction-sheet-template.md (script, scenes, characters, camera, sound cue sheet, packaging, and a stated call budget, approved before production); voiceover/quiet-sfx.md (natural, subtle, sparse scene linked effects from real licensed recordings, placed in narration pauses, with verified reference levels and a per channel kit rule; synthesized effect imitations and loud stings are banned); scripts/preflight_check.py (read only preflight: tools, TTS, disk, sound kit, music bed); scripts/make_dashboard.py (static per video dashboard page from a small JSON file; viewing only, starts no production). All new files tested on the production machine the same day.
 
+### v1.4 (2026-10-17): adds the horror directing-brief pack (`prompts/directing-briefs/horror.md`, 5 briefs: hallway dread, entity reveal, house chase, mirror wrongness, lingering anomaly) for narrated horror, plus the Horror narration row in the format matrix.
 ### v1.3 (2026-10-14): adds the YouTube packaging layer: packaging/ docs (concept, policy-rules.yaml with last_verified 2026-10-14, description template), the package_youtube.py script (policy-validated chapters, title/description/tags generation, automated thumbnail composite, upload checklist), packaging as the final Stage 9 step, and the automated-composite section in the thumbnail system.
 
 ### v1.2 (2026-10-14): adds the localization stage (Stage 10: dubbing + subtitles), AI music/SFX premium tier doc, multi-voice direction doc, talking-heads doc, and the dub-prep.sh script.

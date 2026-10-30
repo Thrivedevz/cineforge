@@ -120,3 +120,20 @@ Added: `prompts/directing-briefs/horror.md` (5 briefs: hallway dread, entity rev
 - Written for narrated original horror (Nightmare Nexus launch): slow-dread pacing, practical locked light sources, reveals without cuts, anomalies over explicit monsters.
 - Every brief follows the 8-block formula; stamped "Last verified: 2026-10", model-agnostic.
 - Repo-wide em-dash grep: zero matches.
+
+# CineForge v1.5 - Build Notes (2026-10-29)
+
+Owner order: implement what is best from the Beyondsumi evaluation, update the repos, and lock all settings to avoid future deviation.
+
+Added:
+- prompts/templates/direction-sheet-template.md (direction approval gate with SFX cue sheet and call budget)
+- voiceover/quiet-sfx.md (quiet scene linked SFX method, with the locked Nightmare Nexus preset)
+- scripts/preflight_check.py (read only preflight report)
+- scripts/make_dashboard.py (static per video dashboard page)
+
+Tests run on the production machine, 2026-10-29:
+- preflight_check.py against the Nightmare Nexus kit and music bed: 9 of 9 checks OK, RESULT: PASS, exit 0.
+- make_dashboard.py on real Video 12 data: dashboard HTML written and verified (title, chapters, video and thumbnail links resolve to files beside the page).
+- Repo wide em dash and en dash grep on all new and edited files: zero matches.
+
+Not taken from Beyondsumi: its synth audio engine (owner rejected its quality), its demo audio (license forbids extraction), its branding, its Remotion renderer, and its multi host and multi language scope.
